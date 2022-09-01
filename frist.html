@@ -1,12 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>冯龙花专属</title>
+    <title>杭州市扫码通行</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .bg {
+            width: 100%;
+            height: 100%;
+            background: #fff;
+
+
+        }
+
+        input {
+            margin: 20px;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            height: 35px;
+            width: 90%;
+        }
+
+        input:focus {
+            border: none;
+        }
+
+        button {
+            width: 70%;
+            background: rgb(238, 178, 110);
+            border: none;
+            height: 35px;
+            margin-top: 50px;
+            border-radius: 15px;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .info {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .code_html {
+            height: 100%;
+            width: 100%;
+            background-image: url("./2.png");
+            background-size: 100%;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+
+
+        .exit {
+            width: 100%;
+            height: 24px;
+            background-color: rgba(255, 255, 255, 0);
+        }
+
+        .time_group {
+            width: 100%;
+            position: absolute;
+            top: 24px;
+        }
+
+        .info_group {
+            position: absolute;
+            width: 100%;
+            top: 165px;
+        }
+
+        .ff {
+            font-family: "黑体";
+            font-weight: bold;
+            width: 100%;
+            text-align: center;
+            color: #314150;
+        }
+
+        .fs {
+            font-family: "黑体";
+            font-weight: bold;
+            color: #000;
+            width: 100%;
+            height: 30px;
+           line-height: 30px;
+        }
+
+        .datestr {
+            font-size: 47px;
+        }
+
+        .timestr {
+            font-size: 63px;
+        }
+
+        .namestr {
+            text-align: left;
+            padding-left: 40px;
+        }
+
+        .placestr {
+            text-align: center;
+        }
+    </style>
+
 </head>
+
 <body>
-    <div>加油，哈哈哈</div>
+    <div class="bg">
+        <div class="info">
+            <input type="text" id="place" placeholder="请输入地点">
+            <input type="text" id="username" placeholder="请输入姓名(必填)">
+            <button class="btn">确认</button>
+        </div>
+        <div class="code_html">
+            <div class="exit"></div>
+            <div class="time_group">
+                <div class="datestr ff"></div>
+                <div class="timestr ff"></div>
+            </div>
+            <div class="info_group">
+                <div class="namestr fs"></div>
+                <div class="placestr fs"></div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        setInterval(() => {
+            var date = new Date()
+            var y = date.getFullYear()
+            var m = date.getMonth() + 1
+            var d = date.getDate()
+            var h = date.getHours()
+            var min = date.getMinutes()
+            var s = date.getSeconds()
+
+            m = m < 10 ? "0" + m : m
+            d = d < 10 ? "0" + d : d
+            h = h < 10 ? "0" + h : h
+            min = min < 10 ? "0" + min : min
+            s = s < 10 ? "0" + s : s
+            var dateStr = m + "月" + d + "日"
+            var timeStr = h + ":" + min + ":" + s
+            $(".datestr").html(dateStr)
+            $(".timestr").html(timeStr)
+        }, 1000)
+        $(".code_html").hide()
+        $(".btn").on("click", () => {
+            var place = $("#place").val()
+            var username = $("#username").val()
+            if (!username) {
+                alert("请输入姓名！")
+                return
+            }
+            $(".info").hide()
+            $(".code_html").show()
+
+            if (username.length > 2) {
+                username = username.substr(0, 1) + "*" + username.substr(username.length-1)
+            } else {
+                username = username.substr(0, 1) + "*"
+            }
+            $(".namestr").html(username)
+            $(".placestr").html(place)
+
+        })
+
+        $(".exit").on("click", () => {
+            $(".info").show()
+            $(".code_html").hide()
+        })
+
+    </script>
+
 </body>
+
 </html>
