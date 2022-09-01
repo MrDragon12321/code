@@ -63,7 +63,7 @@
         .code_html {
             height: 100%;
             width: 100%;
-            background-image: url("./2.png");
+            background-image: url("./0.png");
             background-size: 100%;
             background-repeat: no-repeat;
             position: relative;
@@ -80,13 +80,7 @@
         .time_group {
             width: 100%;
             position: absolute;
-            top: 24px;
-        }
-
-        .info_group {
-            position: absolute;
-            width: 100%;
-            top: 165px;
+            top:3%;
         }
 
         .ff {
@@ -101,9 +95,8 @@
             font-family: "黑体";
             font-weight: bold;
             color: #000;
-            width: 100%;
-            height: 30px;
-           line-height: 30px;
+            height: 28px;
+           line-height: 28px;
         }
 
         .datestr {
@@ -117,10 +110,13 @@
         .namestr {
             text-align: left;
             padding-left: 40px;
+            display: inline;
+           
         }
 
         .placestr {
             text-align: center;
+            width: 100%;
         }
     </style>
 
@@ -131,6 +127,7 @@
         <div class="info">
             <input type="text" id="place" placeholder="请输入地点">
             <input type="text" id="username" placeholder="请输入姓名(必填)">
+            
             <button class="btn">确认</button>
         </div>
         <div class="code_html">
@@ -138,18 +135,18 @@
             <div class="time_group">
                 <div class="datestr ff"></div>
                 <div class="timestr ff"></div>
-            </div>
-            <div class="info_group">
-                <div class="namestr fs"></div>
-                <div class="placestr fs"></div>
+                <div class="namestr fs"></div>&nbsp;&nbsp;<font color="#1195e0" face="黑体" size="2" style="font-weight: bold;">显示</font>
+                <div class="placestr fs" ></div>
             </div>
 
         </div>
 
+    
 
     </div>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script>
+         $(".code_html").hide()
         setInterval(() => {
             var date = new Date()
             var y = date.getFullYear()
@@ -169,7 +166,7 @@
             $(".datestr").html(dateStr)
             $(".timestr").html(timeStr)
         }, 1000)
-        $(".code_html").hide()
+       
         $(".btn").on("click", () => {
             var place = $("#place").val()
             var username = $("#username").val()
