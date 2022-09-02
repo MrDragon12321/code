@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>杭州市扫码通行</title>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
         * {
             margin: 0;
@@ -17,6 +18,8 @@
             height: 100%;
             width: 100%;
             overflow: hidden;
+            font-size: 62.5%;
+
         }
 
         .bg {
@@ -28,12 +31,14 @@
         }
 
         input {
-            margin: 20px;
+            margin: 2rem;
             border-top: none;
             border-left: none;
             border-right: none;
-            height: 35px;
+            height: 3.5rem;
             width: 90%;
+            text-align: center;
+            font-size: 20px;
         }
 
         input:focus {
@@ -44,11 +49,12 @@
             width: 70%;
             background: rgb(238, 178, 110);
             border: none;
-            height: 35px;
-            margin-top: 50px;
-            border-radius: 15px;
-            font-size: 20px;
+            height: 3.5rem;
+            margin-top: 5rem;
+            border-radius: 1.5rem;
+            font-size: 2rem;
             color: #fff;
+
         }
 
         .info {
@@ -63,9 +69,9 @@
         .code_html {
             height: 100%;
             width: 100%;
-            background-image: url("https://cdn-upload.datav.aliyun.com/upload/download/1662019224804-ulTzXnvy.png");
+            /* background-image: url("./0.png");
             background-size: 100%;
-            background-repeat: no-repeat;
+            background-repeat: no-repeat; */
             position: relative;
         }
 
@@ -73,14 +79,11 @@
 
         .exit {
             width: 100%;
-            height: 24px;
+            height: 2.4rem;
             background-color: rgba(255, 255, 255, 0);
-        }
-
-        .time_group {
-            width: 100%;
             position: absolute;
-            top:3%;
+            top: 0;
+            z-index: 1;
         }
 
         .ff {
@@ -88,35 +91,103 @@
             font-weight: bold;
             width: 100%;
             text-align: center;
-            color: #314150;
+            /* color: #314150; */
+            color: #28ab65;
+
         }
 
         .fs {
             font-family: "黑体";
             font-weight: bold;
             color: #000;
-            height: 28px;
-           line-height: 28px;
+            height: 2.3rem;
+            line-height: 2.3rem;
+
         }
 
         .datestr {
-            font-size: 47px;
+            font-size: 3.7rem;
         }
 
         .timestr {
-            font-size: 63px;
+            font-size: 5rem;
+            /* margin-bottom: 0.8rem; */
         }
 
         .namestr {
             text-align: left;
-            padding-left: 40px;
+            padding-left: 3rem;
             display: inline;
-           
+            font-size: 1.4rem;
+
         }
 
         .placestr {
             text-align: center;
             width: 100%;
+            font-size: 1.2rem;
+        }
+
+        .cheader,
+        .cfooter {
+            position: relative;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .time {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .info_card {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .select2-search--dropdown input {
+            margin: 0px;
+            height: 3rem;
+        }
+
+        .select2-container--default .select2-selection--single {
+            height: 3rem;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: #444;
+            line-height: 3rem;
+            text-align: center;
+            font-size: 1.4rem;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 3rem;
+            position: absolute;
+            top: 1px;
+            right: 1px;
+            width: 2rem;
+        }
+
+        .select2-results__option {
+            height: 2rem;
+            line-height: 2rem;
+            font-size: 1.2rem;
+            padding: 6px;
+            user-select: none;
+            -webkit-user-select: none;
         }
     </style>
 
@@ -125,28 +196,92 @@
 <body>
     <div class="bg">
         <div class="info">
-            <input type="text" id="place" placeholder="请输入地点">
-            <input type="text" id="username" placeholder="请输入姓名(必填)">
-            
+            <select id="place" style="width:90%;" data-placeholder="请选择或输入地点"></select>
+
+            <!-- <input type="text" id="place" placeholder="请输入地点" autocomplete="on"> -->
+            <input type="text" id="username" placeholder="请输入姓名(必填)" autofocus>
+
             <button class="btn">确认</button>
         </div>
         <div class="code_html">
             <div class="exit"></div>
-            <div class="time_group">
-                <div class="datestr ff"></div>
+            <div class="cheader">
+                <!-- <div class="datestr ff"></div>
                 <div class="timestr ff"></div>
-                <div class="namestr fs"></div>&nbsp;&nbsp;<font color="#1195e0" face="黑体" size="2" style="font-weight: bold;">显示</font>
-                <div class="placestr fs" ></div>
+                <div class="namestr fs"></div>&nbsp;&nbsp;&nbsp;<font color="#1195e0" face="黑体" 
+                    style="font-weight:400;font-size: 1rem;">显示</font>
+                <div class="placestr fs"></div> -->
+
+                <img src="./11.png">
+                <div class="time">
+                    <div class="datestr ff"></div>
+                    <div class="timestr ff"></div>
+                </div>
+
+            </div>
+            <div class="cfooter">
+                <img src="./12.png">
+                <div class="info_card">
+                    <div class="namestr fs"></div>&nbsp;&nbsp;&nbsp;<font color="#1195e0" face="黑体"
+                        style="font-weight:400;font-size: 1rem;">显示</font>
+                    <div class="placestr fs"></div>
+                </div>
             </div>
 
         </div>
 
-    
+
 
     </div>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
-         $(".code_html").hide()
+        // 获取屏幕属性，初始化字体大小
+        (function (doc, win) {
+
+            var docEl = doc.documentElement,
+
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+
+                recalc = function () {
+
+                    var clientWidth = docEl.clientWidth;
+
+                    if (!clientWidth) return;
+
+                    docEl.style.fontSize = 10 * (clientWidth / 320) + 'px';//其中“20”根据你设置的html的font-size属性值做适当的变化
+
+                };
+
+            if (!doc.addEventListener) return;
+
+            win.addEventListener(resizeEvt, recalc, false);
+
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+
+        })(document, window);
+        // localStorage.setItem("places", "闸弄口C站,武林门,西湖文化广场,杭州东站")
+
+        //初始化下拉框
+        let placeStr = localStorage.getItem("places")
+        var arr = []
+        if (placeStr) {
+            let places = placeStr.split(",")
+            arr = places.map((v, i) => {
+                return { "id": i, "text": v }
+            })
+        }
+
+        $("#place").select2({
+            data: arr,
+            tags: true,
+        })
+        // 初始化姓名文本框
+        $("#username").val(localStorage.getItem("name") ? localStorage.getItem("name") : "")
+
+        $(".code_html").hide()
+
+        // 时间模块
         setInterval(() => {
             var date = new Date()
             var y = date.getFullYear()
@@ -166,19 +301,28 @@
             $(".datestr").html(dateStr)
             $(".timestr").html(timeStr)
         }, 1000)
-       
+
+        // 点击确认按钮，隐藏页面
         $(".btn").on("click", () => {
-            var place = $("#place").val()
+            var place = $("#place").select2("data")[0].text ? $("#place").select2("data")[0].text : ""
             var username = $("#username").val()
             if (!username) {
-                alert("请输入姓名！")
+                alert("请输入姓名!")
                 return
+            }
+            localStorage.setItem("name", username)
+            if (placeStr) {
+                if (placeStr.search(place) == -1) {
+                    localStorage.setItem("places", placeStr + "," + place)
+                }
+            }else{
+                localStorage.setItem("places", place+"")
             }
             $(".info").hide()
             $(".code_html").show()
 
             if (username.length > 2) {
-                username = username.substr(0, 1) + "*" + username.substr(username.length-1)
+                username = username.substr(0, 1) + "*" + username.substr(username.length - 1)
             } else {
                 username = username.substr(0, 1) + "*"
             }
@@ -186,7 +330,7 @@
             $(".placestr").html(place)
 
         })
-
+        // 点击健康码页面头部返回输入页面
         $(".exit").on("click", () => {
             $(".info").show()
             $(".code_html").hide()
