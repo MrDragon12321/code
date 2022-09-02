@@ -306,6 +306,10 @@
         $(".btn").on("click", () => {
             var place = $("#place").select2("data")[0].text ? $("#place").select2("data")[0].text : ""
             var username = $("#username").val()
+            if (!place) {
+                alert("请选择地点或输入新地点!")
+                return
+            }
             if (!username) {
                 alert("请输入姓名!")
                 return
