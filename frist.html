@@ -50,7 +50,7 @@
             background: rgb(238, 178, 110);
             border: none;
             height: 3.5rem;
-            margin-top: 5rem;
+            margin-top:3rem;
             border-radius: 1.5rem;
             font-size: 2rem;
             color: #fff;
@@ -201,7 +201,8 @@
             <!-- <input type="text" id="place" placeholder="请输入地点" autocomplete="on"> -->
             <input type="text" id="username" placeholder="请输入姓名(必填)" autofocus>
 
-            <button class="btn">确认</button>
+            <button class="btn sure">确认</button>
+            <button class="btn reset">清空数据</button>
         </div>
         <div class="code_html">
             <div class="exit"></div>
@@ -303,7 +304,7 @@
         }, 1000)
 
         // 点击确认按钮，隐藏页面
-        $(".btn").on("click", () => {
+        $(".sure").on("click", () => {
             var place = $("#place").select2("data")[0].text ? $("#place").select2("data")[0].text : ""
             var username = $("#username").val()
             if (!place) {
@@ -340,6 +341,10 @@
             $(".code_html").hide()
         })
 
+
+        $(".reset").on("click",()=>{
+            localStorage.clear()
+        })
     </script>
 
 </body>
