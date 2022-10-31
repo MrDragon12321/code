@@ -1,3 +1,1 @@
-# test
-
-用于应急使用，切勿外传，违法行为
+#  https://mrdragon12321.github.io/code/frist.html
