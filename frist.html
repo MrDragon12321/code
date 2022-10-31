@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
     <title>杭州市扫码通行</title>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
@@ -25,7 +25,7 @@
         .bg {
             width: 100%;
             height: 100%;
-            background: #fff;
+            background:#fff
 
 
         }
@@ -73,6 +73,8 @@
             background-size: 100%;
             background-repeat: no-repeat; */
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
 
@@ -92,7 +94,7 @@
             width: 100%;
             text-align: center;
             /* color: #314150; */
-            color: #28ab65;
+            color: #fff;
 
         }
 
@@ -106,11 +108,11 @@
         }
 
         .datestr {
-            font-size: 3.7rem;
+            font-size:1.6rem;
         }
 
         .timestr {
-            font-size: 5rem;
+            font-size:4.5rem;
             /* margin-bottom: 0.8rem; */
         }
 
@@ -151,6 +153,7 @@
         }
 
         .info_card {
+            padding-top: 0.3rem;
             width: 100%;
             position: absolute;
             top: 0;
@@ -213,15 +216,15 @@
                     style="font-weight:400;font-size: 1rem;">显示</font>
                 <div class="placestr fs"></div> -->
 
-                <img src="./11.png">
+                <img src="./13.png">
                 <div class="time">
-                    <div class="datestr ff"></div>
                     <div class="timestr ff"></div>
+                    <div class="datestr ff"></div>
                 </div>
 
             </div>
             <div class="cfooter">
-                <img src="./12.png">
+                <img src="./14.png">
                 <div class="info_card">
                     <div class="namestr fs"></div>&nbsp;&nbsp;&nbsp;<font color="#1195e0" face="黑体"
                         style="font-weight:400;font-size: 1rem;">显示</font>
@@ -281,7 +284,7 @@
         $("#username").val(localStorage.getItem("name") ? localStorage.getItem("name") : "")
 
         $(".code_html").hide()
-
+const weeks=["0","星期一","星期二","星期三","星期四","星期五","星期六","星期日"]
         // 时间模块
         setInterval(() => {
             var date = new Date()
@@ -291,13 +294,14 @@
             var h = date.getHours()
             var min = date.getMinutes()
             var s = date.getSeconds()
-
+            var w=date.getDay()
+           
             m = m < 10 ? "0" + m : m
             d = d < 10 ? "0" + d : d
             h = h < 10 ? "0" + h : h
             min = min < 10 ? "0" + min : min
             s = s < 10 ? "0" + s : s
-            var dateStr = m + "月" + d + "日"
+            var dateStr = m + "月" + d + "日"+"  "+weeks[w]
             var timeStr = h + ":" + min + ":" + s
             $(".datestr").html(dateStr)
             $(".timestr").html(timeStr)
